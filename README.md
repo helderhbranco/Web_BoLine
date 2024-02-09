@@ -50,3 +50,55 @@ password `Abc@1234`
 No Frontend, experiência mais focada no utilizador (USER) no pagamento, via PayPal, deve user as seguintes credenciais:
 email: `sb-47ry8s26108547@personal.example.com`
 password: `cq@>0QbE`
+
+-----------
+
+# BOLine
+
+# Portuguese Heritage Promotion Project
+
+This project was developed as part of the Web Environment Programming course by 3 students, in the study plan of the 2nd year of the 2nd semester of the Bachelor's degrees in Computer Engineering and Computer Security in Computer Networks, taught at the School of Technology and Management, an Organic Unit of the Polytechnic Institute of Porto, during the academic year 2022/2023.
+
+## About the Project
+
+The aim of this project is to develop a web application for the promotion and management of Portuguese heritage. The application allows the management of various historical sites, including the sale of tickets for visits and events, promotion of the sites, and generation of statistics to encourage visits.
+
+## Implemented Features
+
+- Registration and management of administrative staff
+- Management of sites/monuments and associated events
+- User registration and ticket issuance
+- Implementation of a points system to encourage visits to the sites
+- Purchase of tickets using points or available payment methods
+- Viewing of user profile and purchased tickets
+
+---
+To run the application, follow these steps:
+
+1. Navigate to the Backend project folder `cd Backend`
+2. Install dependencies `npm install --force` [1]
+3. Start the NodeJS server `npm start` (if you have nodemon installed on your machine, use `nodemon`) [2]
+
+4. Navigate back to the main project folder `cd ..`
+
+5. Navigate to the Frontend project folder `cd Frontend`
+6. Install dependencies `npm install --force` [1]
+7. Start the NodeJS server `ng start` (if you have nodemon installed on your machine, use `nodemon`) [2]
+
+### Notes
+[1] - Only necessary once, at the beginning
+[2] - Execute every time to run the application
+
+You have access to 2 user accounts to try out the project:
+
+For the *Backend* (ADMIN)
+email: `paw@backend.paw`
+password: `Abc@1234`
+
+For the *Frontend* (USER)
+email: `paw@frontend.paw`
+password: `Abc@1234`
+
+In the Frontend, for a user-focused experience (USER) in payment, via PayPal, use the following credentials:
+email: `sb-47ry8s26108547@personal.example.com`
+password: `cq@>0QbE`
