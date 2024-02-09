@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="/stylesheets/auth.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script rel="javascripts" src="/javascripts/users.js"></script>
+    <script rel="javascripts" src="/javascripts/auth.js"></script>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>Register</h1>
+                        <span class="badge badge-pill badge-secondary" id="span-login">BOLine</span>
+                    </div>
+                    <div class="card-body">
+                        <form id="register-form" action="/auth/register" method="POST"
+                            onsubmit="return verifyFormRegister()">
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label for="name">Name</label>
+                                    <input type="text" class="form-control" id="name" name="name" required>
+                                    <div id='name-message' style="display: none;"></div>
+                                </div>
+                            </div>
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label for="email">Email</label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <br>
+                                    <label for="confirm-email">Email <small>confirmação</small></label>
+                                    <input type="email" class="form-control" id="confirm-email" name="confirm-email"
+                                        required>
+                                    <div id='email-message' class="alert alert-danger col-md-12" style="display: none;">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row form-group">
+                                <div class="col-md-12">
+                                    <label for="password">Password</label>
+                                    <input type="password" class="form-control" id="password" name="password" required
+                                    oninput="passwordHelp()" onblur="passwordHelpRemove()">
+                                    <br>
+                                    <label for="confirm-password">Password <small>confirmação</small></label>
+                                    <input type="password" class="form-control" id="confirm-password"
+                                        name="confirm-password" required>
+                                    <div id='password-message' class="alert alert-danger col-md-12"
+                                        style="display: none;"></div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </form>
+                        <p>Já tem conta? <a href="/auth/login">Login</a> </p>
+                        <br>
+                        <!-- Display alert message -->
+                        <% if (message) { %>
+                            <div class="alert alert-danger col-md-10">
+                                <%= message %>
+                            </div>
+                            <% } %>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

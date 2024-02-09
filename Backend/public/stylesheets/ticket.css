@@ -1,0 +1,56 @@
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.log-form {
+    max-width: 400px;
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.log-form h2 {
+    margin-bottom: 20px;
+    text-align: center;
+    color: #555;
+}
+
+.form-group label {
+    font-weight: 500;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.form1 select {
+    height: 38px;
+    font-size: 14px;
+}
+
+.form1 input[type="text"] {
+    height: 38px;
+    font-size: 14px;
+}
+
+.btn-primary {
+    margin-top: 20px;
+    width: 100%;
+}
+
+.btn-back {
+    display: block;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+}
+
+#auxiliar {
+    width: 100%;
+    text-align: center;
+    
+}

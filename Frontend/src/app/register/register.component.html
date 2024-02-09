@@ -1,0 +1,52 @@
+<div>
+    <app-navbar></app-navbar>
+</div>
+<div class="background-image">
+    <div class="container">
+        <div class="card-container">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-subtitle>BOLine</mat-card-subtitle>
+                    <mat-card-title id="title">Registo</mat-card-title>
+                </mat-card-header>
+                <hr><br>
+                <mat-card-content class="text-center">
+                    <form class="example-form-center" [formGroup]="registerForm" (ngSubmit)="register()">
+                        <mat-form-field class="example-full-width full-width-input">
+                            <mat-label>Nome</mat-label>
+                            <input type="text" matInput formControlName="name">
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="example-full-width full-width-input">
+                            <mat-label>Email</mat-label>
+                            <input type="email" matInput formControlName="email">
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="example-full-width full-width-input">
+                            <mat-label>Email <small>confirmação</small></mat-label>
+                            <input type="email" matInput formControlName="confirmEmail">
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="example-full-width full-width-input">
+                            <mat-label>Password</mat-label>
+                            <input type="password" matInput formControlName="password">
+                        </mat-form-field>
+                        <br>
+                        <mat-form-field class="example-full-width full-width-input">
+                            <mat-label>Password <small>confirmação</small></mat-label>
+                            <input type="password" matInput formControlName="confirmPassword">
+                        </mat-form-field>
+                        <div class="button-container">
+                            <button mat-raised-button color="primary">Registar</button>
+                        </div>
+                    </form>
+                    <br>
+                    <a mat-flat-button color="warn" routerLink="/home">Voltar</a>
+                    <div>
+                        <p>Já tem conta? <a routerLink="/login">Login</a> </p>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

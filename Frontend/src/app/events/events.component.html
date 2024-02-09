@@ -1,0 +1,62 @@
+<div class="form-group text-right">
+  <label for="filterSelect" class="label-right">Filter by Event Place:</label>
+  <select
+    class="form-control select-right"
+    id="filterSelect"
+    [(ngModel)]="selectedPlace"
+    (change)="filterEvents()"
+  >
+    <option value="">All</option>
+    <option *ngFor="let place of uniquePlaces" [value]="place">
+      {{ place }}
+    </option>
+  </select>
+</div>
+
+<div class="col-md-10 offset-md-1 mt-7">
+  <div class="container">
+    <div class="movie-card" *ngFor="let event of filteredEvents">
+      <a [routerLink]="['/details', event._id]">
+        <div
+          class="movie-header"
+          style="
+            background: url(http://localhost:3000/images/{{ event.photo }});
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+          "
+        ></div>
+        <!--movie-header-->
+      </a>
+      <div class="event-content">
+        <div class="event-content-header">
+          <a [routerLink]="['/details', event._id]">
+            <h3 class="event-title">{{ event.name }}</h3>
+          </a>
+        </div>
+        <div class="movie-info">
+          <div class="info-section">
+            <h4>Data Inicio</h4>
+            <h5>{{ event.date | date : "dd/MM/yyyy" }}</h5>
+          </div>
+          <!--date,time-->
+          <div class="info-section">
+            <h4>Data Final</h4>
+            <h5>{{ event.date_final | date : "dd/MM/yyyy" }}</h5>
+          </div>
+          <!--screen-->
+        </div>
+        <div
+          style="text-align: center; font-size: larger; color: rgb(13, 77, 77)"
+        >
+          <a [routerLink]="['/details', event._id]">
+            <h3>VIEW EVENT</h3>
+          </a>
+        </div>
+      </div>
+      <!--movie-content-->
+    </div>
+    <!--movie-card-->
+  </div>
+  <!--container-->
+</div>

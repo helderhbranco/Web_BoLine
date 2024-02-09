@@ -1,0 +1,54 @@
+<mat-card>
+    <mat-card-header>
+        <mat-card-title>
+            <h1>Detalhes</h1>
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content class="text-center">
+        <div class="row">
+            <p>Os seus detalhes</p>
+            <mat-card-actions>
+                <section class="example-section">
+                    <mat-checkbox class="example-margin" [(ngModel)]="disabled"
+                        (click)="toggleEdit()">Editar</mat-checkbox>
+                </section>
+            </mat-card-actions>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <img id="photo" class="img-fluid rounded-start" alt="..." src="{{ photo }}" />
+            </div>
+            <div class="col-md-8">
+                <form class="example-form-center input-container" [formGroup]="editForm" (ngSubmit)="edit()">
+                    <mat-form-field class="full-width-form">
+                        <mat-label>Nome</mat-label>
+                        <input type="text" matInput formControlName="name">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width-form">
+                        <mat-label>Email</mat-label>
+                        <input type="email" matInput formControlName="email">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width-form" *ngIf="disabled">
+                        <mat-label>Email <small>confirmação</small></mat-label>
+                        <input type="email" matInput formControlName="confirmEmail">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width-form" *ngIf="disabled">
+                        <mat-label>Password</mat-label>
+                        <input type="password" matInput formControlName="password">
+                    </mat-form-field>
+                    <br>
+                    <mat-form-field class="full-width-form" *ngIf="disabled">
+                        <mat-label>Password <small>confirmação</small></mat-label>
+                        <input type="password" matInput formControlName="confirmPassword">
+                    </mat-form-field>
+                    <div class="button-container" *ngIf="disabled">
+                        <button mat-raised-button color="primary">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

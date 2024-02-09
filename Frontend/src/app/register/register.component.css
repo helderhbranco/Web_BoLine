@@ -1,0 +1,38 @@
+.example-form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+}
+
+
+#title {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.background-image {
+  background-image: url('src/assets/back.jpeg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card-container {
+  width: 60%;
+}
+
+.full-width-form {
+  width: 100%;
+}
+
+.full-width-input {
+  width: 100%;
+}

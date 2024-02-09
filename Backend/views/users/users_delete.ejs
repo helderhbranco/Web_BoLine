@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <title>User Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script rel="javascripts" src="/javascripts/utils_list.js"></script>
+</head>
+
+<body onload="iconStatus('user')">
+    <div class="container">
+        <h1 class="mt-4">Eliminar utilizador</h1>
+        <div class="row mt-4">
+            <div class="col-md-6">
+                <div class="mb-2">
+                    <span class="badge badge-pill badge-secondary">
+                        <%= user.role %>
+                    </span>
+                    <span class="badge badge-pill badge-light">
+                        <%= user._id %>
+                    </span>
+                </div>
+                <hr>
+                <%- include('user_details.ejs')%>
+            </div>
+        </div>
+        <form action="/users/delete/<%= user._id %>" method="POST"
+            onsubmit="return confirm('Tem a certeza que deseja apagar este utilizador?')">
+            <button type="submit" class="btn btn-danger" <%=user.status===false ? 'disabled' : '' %>>Eliminar</button>
+        </form>
+
+        <%- include('../__footer.ejs')%>
+    </div>
+
+</body>
+
+</html>

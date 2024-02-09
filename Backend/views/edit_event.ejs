@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/event.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="icon" href="/images/imagem.ico">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <title>Editar Evento</title> 
+</head>
+
+<body></body>
+  <div class="log-form">
+    <h2 class="t_add">EDITAR EVENTO</h2>
+      <form class="form1" action="/event/edits"  enctype="multipart/form-data"  method="post">
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Nome</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="name" name="name" value="<%- events.name %>">
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Imagem</label>
+          <div class="col-sm-10">
+            <input type="file" class="form-control" id="image" name="image">
+          </div>
+
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Descrição</label>
+          <div class="col-sm-10">
+            <textarea class="form-control" id="description" name="description" rows="3"><%- events.description %></textarea>
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Data</label>
+          <div class="col-sm-10">
+            <input type="date" class="form-control" id="date" name="date" value="<%- events.date %>">
+          </div>
+        </div>
+        
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Data Final</label>
+          <div class="col-sm-10">
+            <input type="date" class="form-control" id="date_final" name="date_final" value="<%- events.date_final %>">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Lotação</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" id="capacity" name="capacity" value="<%- events.capacity %>" min="1">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Preço</label>
+          <div class="col-sm-10">
+            <input type="number" class="form-control" id="price" name="price" value="<%- events.price %>" min="0">
+          </div>
+        </div>
+
+        <div class="form-group row" style="display: none;">
+          <label class="col-sm-2 col-form-label">Evento</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" id="event" name="event" value="<%- events._id %>">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <label class="col-sm-2 col-form-label">Local</label>
+          <div class="col-sm-10">
+            <select id="monument_id" name="monument_id" class="form-control" style="padding: 0%;">
+              <% for(var i=0; i < monuments.length; i++) { %>
+              <option value="<%- monuments[i].place_id %>"> <%- monuments[i].name %></option>
+              <% } %>
+            </select>
+          </div>
+        </div>
+
+        <button id="submit" type="submit" class="button_add">Editar</button>
+      </form>
+      <a href="/pagina_inicial" class="btn btn-back">
+        <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Função para converter a data no formato "yyyy-mm-dd" para "dd/mm/yyyy"
+    function formatDate(dateString) {
+      var dateParts = dateString.split("-");
+      var formattedDate = dateParts[2] + "/" + dateParts[1] + "/" + dateParts[0];
+      return formattedDate;
+    }
+  
+    // Função a ser chamada no evento onload da página
+    function loadDateValues() {
+      var eventDate = document.getElementById("date").value;
+      var eventDateFinal = document.getElementById("date_final").value;
+  
+      // Converter as datas para o formato "dd/mm/yyyy"
+      var formattedDate = formatDate(eventDate);
+      var formattedDateFinal = formatDate(eventDateFinal);
+  
+      // Definir os valores convertidos nos campos de data
+      document.getElementById("date").value = formattedDate;
+      document.getElementById("date_final").value = formattedDateFinal;
+    }
+  </script>
+</body>
+
+</html>

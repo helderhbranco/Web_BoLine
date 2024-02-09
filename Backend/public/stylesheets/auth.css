@@ -1,0 +1,41 @@
+body {
+  /*background-color: #f8f9fa;*/
+  padding-top: 50px;
+  
+  background-image: url("/images/back.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.container {
+  margin: 0 auto;
+}
+
+#register {
+  max-width: 700px;
+}
+
+.card-header {
+  text-align: center;
+  font-size: xx-large;
+  font-weight: bold;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.form-group label {
+  font-weight: bold;
+}
+
+#span-login {
+  display: block;
+  align-items: right;
+}

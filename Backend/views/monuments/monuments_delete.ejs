@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/style_event.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="icon" href="/images/imagem.ico">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  </link>
+  <title>Remover Monumentos</title>
+</head>
+
+<body>
+  <div class="log-form">
+    <h2 class="t_add">REMOVER MONUMENTO</h2>
+    <form class="form1" action="/monument/delete" method="POST">
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Local </label>
+        <div class="col-sm-10">
+          <select id="local" name="local">
+            <% monument.forEach(function(mon) { %>
+              <option value="<%= mon._id %>"> <%= mon.name %></option>
+            <% }); %>
+          </select>
+
+        </div>
+      </div>
+
+      <button id="submit" type="submit" class="btn">Eliminar</button>
+    </form>
+    <a class="a" href=<%-`/pagina_inicial` %>>Voltar à página inicial. </a>
+  </div>
+</body>
+
+</html>

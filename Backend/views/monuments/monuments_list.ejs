@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<!--
+<html>
+  <head>
+    <title>Monuments</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Monuments</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Address</th>
+            <th>Coordinates</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% monuments.forEach(monument => { %>
+          <tr>
+            <td><%= monument.name %></td>
+            <td><%= monument.address.formatted %></td>
+            <td>
+              <%= monument.coordinates.lat %>, <%= monument.coordinates.lon %>
+            </td>
+            <td><%= monument.status%></td>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+    </div>
+    <a class="a" href=<%-`/pagina_inicial` %>>Voltar à página inicial. </a> 
+  </body>
+</html>
+-->
+
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Listar Monumentos</title>
+  <link rel="stylesheet" href="/stylesheets/list_util.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script rel="javascripts" src="/javascripts/utils_list.js"></script>
+</head>
+
+<body onload="iconStatus('monument')">
+  <h1>Listar Monumentos</h1>
+
+  <button onclick="window.location.href='/monument/create'" class="btn btn-dark" id="btn_create">
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-house-add-fill"
+      viewBox="0 0 16 16">
+      <path
+        d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Zm.5-5v1h1a.5.5 0 0 1 0 1h-1v1a.5.5 0 1 1-1 0v-1h-1a.5.5 0 1 1 0-1h1v-1a.5.5 0 0 1 1 0Z" />
+      <path
+        d="M8.707 1.5a1 1 0 0 0-1.414 0L.646 8.146a.5.5 0 0 0 .708.708L8 2.207l6.646 6.647a.5.5 0 0 0 .708-.708L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.707 1.5Z" />
+      <path d="m8 3.293 4.712 4.712A4.5 4.5 0 0 0 8.758 15H3.5A1.5 1.5 0 0 1 2 13.5V9.293l6-6Z" />
+    </svg>
+    Criar monumento
+  </button>
+
+  <div id="filter-form">
+    <br>
+    <label for="status-filter">Filtrar por status:</label>
+    <select id="status-filter">
+      <option value="all">Todos</option>
+      <option value="Activated">Activated</option>
+      <option value="Deactivated">Deactivated</option>
+    </select>
+  </div>
+
+  <table id="list-table">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Localização</th>
+        <th>Estado</th>
+        <th id="btns"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% monuments.forEach(function(monument) { %>
+        <tr class="<%= monument.status %>">
+          <td>
+            <%= monument.name %>
+          </td>
+          <td>
+            <%= monument.address.formatted %>
+          </td>
+          <td>
+            <div id="status-cell"><%= monument.status %></div>
+          </td>
+          
+          <td id="btns">
+            <form action="/monument/delete/<%= monument._id %>" method="POST"
+              onsubmit="return confirm('Tem a certeza que deseja apagar este monumento?')">
+              <button class="btn btn-danger" <%=monument.status==='Activated' ? 'disabled' : '' %>>
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3"
+                  viewBox="0 0 16 16">
+                  <path
+                    d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5ZM11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H2.506a.58.58 0 0 0-.01 0H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1h-.995a.59.59 0 0 0-.01 0H11Zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5h9.916Zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47ZM8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5Z" />
+                </svg>
+              </button>
+            </form>
+            
+          </td>
+        </tr>
+        <% }); %>
+    </tbody>
+  </table>
+
+  <br>
+  <button onclick="window.location.href='/pagina_inicial'" type="button"
+    class="btn btn-outline-secondary">Voltar</button><br>
+
+  <script id="statusFilter">
+    const statusFilter = document.querySelector('#status-filter');
+    const monumentRows = document.querySelectorAll('#list-table tbody tr');
+
+    statusFilter.addEventListener('change', function () {
+      const selectedStatus = statusFilter.value;
+      monumentRows.forEach(function (row) {
+        if (selectedStatus === 'all') {
+          row.style.display = '';
+        } else if (selectedStatus === 'Activated' && row.classList.contains('Activated')) {
+          row.style.display = '';
+        } else if (selectedStatus === 'Deactivated' && row.classList.contains('Deactivated')) {
+          row.style.display = '';
+        } else {
+          row.style.display = 'none';
+        }
+      });
+    });
+  </script>
+
+</body>
+
+</html>

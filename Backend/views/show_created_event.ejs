@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event Details</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Event Details</h1>
+      <hr />
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form-group">
+            <label>Name:</label>
+            <p><%= event.name %></p>
+          </div>
+          <div class="form-group">
+            <label>Description:</label>
+            <p><%= event.description %></p>
+          </div>
+          <div class="form-group">
+            <label>Date:</label>
+            <p><%= event.date %></p>
+          </div>
+          <div class="form-group">
+            <label>Price:</label>
+            <p><%= event.price %></p>
+          </div>
+          <div class="form-group">
+            <label>Capacity:</label>
+            <p><%= event.capacity %></p>
+          </div>
+        </div>
+      </div>
+      <a class="a" href=<%-`/pagina_inicial` %>>Voltar à página inicial. </a> 
+
+    </div>
+  </body>
+</html>

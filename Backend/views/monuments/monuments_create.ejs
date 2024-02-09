@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+
+    <script rel="javascripts" src="/javascripts/monuments.js"></script>
+    <title>Adicionar uma localização</title>
+  </head>
+
+  <body>
+    <div class="container">
+      <h2 class="text-center mt-4"><b>ADICIONAR LOCALIZAÇÃO</b></h2>
+      <hr />
+
+      <div class="card" id="card-auto">
+        <div class="card-body">
+          <!-- Formulário para pesquisar localização -->
+          <form
+            id="form-find"
+            class="form1 mt-4"
+            action="/monument/request/send"
+            method="POST"
+            onsubmit="return validateFormFind()"
+          >
+            <div class="input-group">
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Endereço da rua"
+                aria-label="Endereço da rua"
+                name="address"
+                id="address_find"
+              />
+              <div class="input-group-append">
+                <button class="btn btn-primary" type="submit">Pesquisar</button>
+              </div>
+            </div>
+          </form>
+
+          <br />
+
+          <!-- Lista de resultados da pesquisa -->
+          <% if (results !== "empty" && results.length > 0) { %>
+          <form
+            id="form-list"
+            class="form1 mt-4 card"
+            action="/monument/request/accept"
+            method="POST"
+          >
+            <div class="card-body">
+              <h5 class="card-header">
+                <small><b>Lista de resultados</b></small>
+              </h5>
+              <br />
+              <!--<% if (results.length> 0) { %>-->
+              <% for (let i=0; i < results.length; i++) { %>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="selectedResult"
+                  id="radio<%= i %>"
+                  value="<%= JSON.stringify(results[i]) %>"
+                />
+                <label class="form-check-label" for="radio<%= i %>">
+                  <span class="form-check-label">
+                    <%= results[i].formatted %>
+                  </span>
+                </label>
+              </div>
+              <% } %>
+              <!--<% }%>-->
+              <br />
+              <button type="submit" class="btn btn-primary">Continuar</button>
+            </div>
+          </form>
+          <% } else if (results === "empty") { %>
+          <div class="alert alert-danger" role="alert">
+            Não foram encontrados resultados para a pesquisa efetuada.
+          </div>
+          <% } %>
+        </div>
+      </div>
+
+      <br />
+
+      <div class="card" id="card-manual">
+        <div class="card-body">
+          <!-- Formulário para adicionar um monumento -->
+          <form
+            id="form-create"
+            class="form1 mt-4"
+            action="/monument/create"
+            method="POST"
+            onsubmit="return verifyForm()"
+            enctype="multipart/form-data"
+          >
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label"><b>Nome</b></label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  name="name"
+                  placeholder="Nome do monumento"
+                  value="<%= monument.name %>"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label"><b>Morada</b></label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="street"
+                  name="street"
+                  placeholder="Endereço da rua"
+                  required
+                  value="<%= monument.street %>"
+                />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="city"
+                  name="city"
+                  placeholder="Cidade"
+                  required
+                  value="<%= monument.city %>"
+                />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="county"
+                  name="county"
+                  placeholder="Distrito"
+                  required
+                  value="<%= monument.county %>"
+                />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="postcode"
+                  name="postcode"
+                  placeholder="Código postal"
+                  required
+                  value="<%= monument.postcode %>"
+                />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="country"
+                  name="country"
+                  placeholder="País"
+                  required
+                  value="<%= monument.country %>"
+                />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="formatted"
+                  name="formatted"
+                  placeholder="Endereço formatado"
+                  required
+                  value="<%= monument.formatted %>"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label"><b>Coordenadas</b></label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lat"
+                  name="lat"
+                  placeholder="Latitude"
+                  required
+                  value="<%= monument.lat %>"
+                />
+                <input
+                  type="text"
+                  class="form-control"
+                  id="lon"
+                  name="lon"
+                  placeholder="Longitude"
+                  required
+                  value="<%= monument.lon %>"
+                />
+              </div>
+            </div>
+            <div class="form-group row">
+              <label class="col-sm-2 col-form-label"><b>ID</b></label>
+              <div class="col-sm-10">
+                <input
+                  type="text"
+                  class="form-control"
+                  id="place_id"
+                  name="place_id"
+                  placeholder="Geoapify place id"
+                  value="<%= monument.place_id %>"
+                  readonly
+                />
+              </div>
+              <label class="col-sm-2 col-form-label"><b>Imagem</b></label>
+              <div class="col-sm-10">
+                <input
+                  type="file"
+                  class="form-control"
+                  id="image"
+                  name="image"
+                  placeholder="Imagem"
+                  required
+                />
+            </div>
+            <button id="submit" type="submit" class="btn btn-primary mt-4">
+              Criar
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Display alert message -->
+      <% if (message) { %>
+      <br />
+      <div class="alert alert-danger"><%= message %></div>
+      <% } %> <%- include('../__footer')%>
+    </div>
+  </body>
+</html>

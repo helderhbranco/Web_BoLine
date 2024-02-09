@@ -1,0 +1,52 @@
+<app-navbar></app-navbar>
+
+<div class="card mb-4" style="max-width: 1540px" class="col-md-4 offset-md-2 mt-5" *ngIf="event">
+  <div class="row g-0" style="max-width: 1540px; width: 1200px; height: 700px">
+    <div class="col-md-4">
+      <img class="img-fluid rounded-start" alt="..." src="http://localhost:3000/images/{{ event.photo }}" />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body" style="margin: 2%">
+        <h1 class="card-title">{{ event.name }}</h1>
+        <h3 class="card-text">{{ event.description }}</h3>
+
+        <h5 class="card-text text-muted">
+          Local: {{ event.event_place_name }}
+        </h5>
+        <h5 class="card-text text-muted">
+          Início: {{ event.date | date : "dd/MM/yyyy" }}
+        </h5>
+        <h5 class="card-text text-muted">
+          Fim: {{ event.date_final | date : "dd/MM/yyyy" }}
+        </h5>
+        <h4 class="card-text text-muted">
+          Price: {{ event.price }} $
+        </h4>
+        <form class="example-form-center" [formGroup]="quantidadeTicketsForm" *ngIf="event.capacity - event.instante_capacity !== 0">
+          <div class="card-text">
+            <!-- How many tickets do you want? -->
+            <div class="form-group">
+              <label for="quantidadeTickets">Tickets </label>
+              <input class="form-control-sm" type="number" id="quantidadeTickets" formControlName="quantidadeTickets" required min="1" [max]="event.capacity - event.instante_capacity" [(ngModel)]="quantidadeTickets" />
+            </div>            
+          </div>
+          <div class="card-text">
+            <!-- Use points checkbox -->
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" formControlName="usePoints" id="usePointsCheckbox" (change)="toggleUsePoints()" />
+              <label class="form-check-label" for="usePointsCheckbox">Use Points?</label>
+            </div>
+          </div>
+          <div class="card-text">
+            <button type="button" class="btn btn-primary" style="width: 200px" [routerLink]="['/buy/' + event._id + '/' + quantidadeTickets + '/' + usePoints]">
+              Buy Ticket
+            </button>
+          </div>
+        </form>
+        <div class="card-text" *ngIf="event.capacity - event.instante_capacity === 0">
+          <button mat-flat-button color="warn">Esgotado</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

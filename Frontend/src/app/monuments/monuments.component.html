@@ -1,0 +1,73 @@
+<app-navbar></app-navbar>
+<div class="form-group text-right">
+  <label for="filterSelect" class="label-right"
+    >Filter by Monument Place:</label
+  >
+  <select
+    class="form-control select-right"
+    id="filterSelect"
+    [(ngModel)]="selectedName"
+    (change)="filterMonuments()"
+  >
+    <option value="">All</option>
+    <option *ngFor="let monument of monuments" [value]="monument.name">
+      {{ monument.name }}
+    </option>
+  </select>
+</div>
+
+<div class="col-md-10 offset-md-1 mt-7">
+  <div class="container">
+    <ng-container *ngFor="let monument of filteredMonuments">
+      <div class="movie-card" *ngIf="monument.status !== 'Deactivated'">
+        <a [routerLink]="['eventBymonument/', monument.place_id]">
+          <div
+            class="movie-header"
+            style="
+              background: url(http://localhost:3000/images/{{
+              monument.photo
+            }});
+              background-size: cover;
+              background-position: center;
+              background-repeat: no-repeat;
+            "
+          ></div>
+          <!-- movie-header -->
+        </a>
+        <div class="event-content">
+          <div class="event-content-header">
+            <a [routerLink]="['eventBymonument/', monument.place_id]">
+              <h3 class="event-title">{{ monument.name }}</h3>
+            </a>
+          </div>
+          <div class="movie-info">
+            <div class="info-section">
+              <h4>city</h4>
+              <h5>{{ monument.address.city }}</h5>
+            </div>
+            <!-- date,time -->
+            <div class="info-section">
+              <h4>Status</h4>
+              <h5>{{ monument.status }}</h5>
+            </div>
+            <!-- screen -->
+          </div>
+          <div
+            style="
+              text-align: center;
+              font-size: larger;
+              color: rgb(13, 77, 77);
+            "
+          >
+            <a [routerLink]="['eventBymonument/', monument.place_id]">
+              <h3>VIEW EVENTS WITH THIS MONUMENT</h3>
+            </a>
+          </div>
+        </div>
+        <!-- movie-content -->
+      </div>
+      <!-- movie-card -->
+    </ng-container>
+  </div>
+  <!-- container -->
+</div>

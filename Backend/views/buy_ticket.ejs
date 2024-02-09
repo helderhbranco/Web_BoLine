@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="/stylesheets/ticket.css" />
+    <link rel="icon" href="/images/imagem.ico" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <script rel="javascripts" src="/javascripts/ticket.js"></script>
+    <title>Emitir Bilhete</title>
+  </head>
+
+  <body onload="formNewUser()">
+    <div class="log-form">
+      <h2>Emitir Bilhete</h2>
+      <form class="form1" action="/ticket/create" method="post">
+        <div class="form-group">
+          <label for="event">Evento</label>
+          <select id="event" name="event" class="form-control">
+            <% for(var i=0; i < events.length; i++) { %>
+            <option value="<%- events[i]._id %>"><%- events[i].name %></option>
+            <% } %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="users">User</label>
+          <select
+            id="users"
+            name="users"
+            onchange="formNewUser()"
+            class="form-control"
+          >
+            <% for(var i=0; i < users.length; i++) { %>
+            <option value="<%- users[i]._id %>">
+              <%- users[i].name %> | <%- users[i].email %>
+            </option>
+            <% } %>
+            <option value="new">(novo)</option>
+          </select>
+          <span class="badge bg-light" id="auxiliar"></span>
+        </div>
+        <div class="form-group" id="new-user" style="display: none">
+          <label for="name">Nome</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Nome"
+            class="form-control"
+          />
+          <label for="email">Email</label>
+          <input
+            type="text"
+            id="email"
+            name="email"
+            placeholder="Email"
+            class="form-control"
+          />
+        </div>
+        <div class="form-group">
+          <label for="usepoints">Utilizar pontos:</label>
+          <select id="usepoints" name="usepoints" class="form-control">
+            <option value="true">Sim</option>
+            <option value="false">Não</option>
+          </select>
+        </div>
+        <button id="submit" type="submit" class="btn btn-primary">
+          Emitir
+        </button>
+      </form>
+      <a href="/pagina_inicial" class="btn btn-back">Voltar</a>
+    </div>
+  </body>
+</html>

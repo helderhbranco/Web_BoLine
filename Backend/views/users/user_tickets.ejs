@@ -1,0 +1,28 @@
+<% if (tickets.length > 0) { %>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Evento</th>
+                <th scope="col">Data</th>
+                <th scope="col">Local</th>
+                <th scope="col">Preço</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% tickets.forEach((ticket, index) => { %>
+            <tr>
+                <th scope="row"><%= index + 1 %></th>
+                <td><%= ticket.event.name %></td>
+                <td><%= ticket.event.date.toLocaleString() %></td>
+                <td><%= ticket.event.monument.name %></td>
+                <td><%= ticket.price %></td>
+            </tr>
+            <% }) %>
+        </tbody>
+    </table>
+<% } else { %>
+    <span class="badge badge-pill">
+        sem bilhetes
+    </span>
+<% } %>

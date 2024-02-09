@@ -1,0 +1,69 @@
+<app-navbar></app-navbar>
+
+<div class="card mb-4" style="max-width: 100%; padding: 20px">
+  <div class="row g-0">
+    <div class="col-md-4">
+      <img
+        class="img-fluid rounded-start"
+        alt="..."
+        src="http://localhost:3000/images/{{ event.photo }}"
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h1 class="card-title">{{ event.name }}</h1>
+        <h3 class="card-text">{{ event.description }}</h3>
+
+        <div class="card-text text-muted">
+          <p>Local: {{ event.event_place_name }}</p>
+          <p>Início: {{ event.date | date : "dd/MM/yyyy" }}</p>
+          <p>Fim: {{ event.date_final | date : "dd/MM/yyyy" }}</p>
+          <p *ngIf="!usePoints">Quantidade de Bilhetes: {{ quantidade }}</p>
+          <p *ngIf="usePoints">Quantidade de Bilhetes: {{ quantidade }} ( Grátis : {{realquantity}} )</p>
+          <p>Preço unitário: {{ event.price }} $</p>
+          <hr/>
+          <!-- Descritivo do Total -->
+          <div>
+            <!-- Tabela com Bilhete, qnt e subtotal-->
+            <table class="table table-striped">
+              <thead>
+                <tr class="text-center">
+                  <th scope="col">Descritivo</th>
+                  <th scope="col">Quantidade</th>
+                  <th scope="col">Subtotal</th>
+                </tr>
+              </thead>
+              <tbody>
+                <!--linha do ticket normal-->
+                <tr>
+                  <td>Bilhete ( {{ event.name }} )</td>
+                  <td class="text-center">{{ quantidade }}</td>
+                  <td class="text-center">+ {{ quantidade*event.price }}</td>
+                </tr>
+                <!--linha do ticket grátis-->
+                <tr *ngIf="usePoints">
+                  <td>{{ "Bilhete Grátis ( " + realquantity*50 + " pontos )" }}</td>
+                  <td class="text-center">{{ realquantity }}</td>
+                  <td class="text-center">- {{ realquantity*event.price }}</td>
+                </tr>
+                <!--linha da taxa paypal-->
+                <tr>
+                  <td>{{ tax.name }}</td>
+                  <td class="text-center">1</td>
+                  <td class="text-center">+ {{ tax.amount }}</td>
+                </tr>
+                <!--linha final-->
+                <tr>
+                  <td></td>
+                  <td class="text-center"><b>Total</b></td>
+                  <td class="text-center"><b>= {{ preco_total }}</b></td>
+              </tbody>
+            </table>
+          </div>
+          <hr/>
+        </div>
+        <div id="myPaypalButtons"></div>
+      </div>
+    </div>
+  </div>
+</div>

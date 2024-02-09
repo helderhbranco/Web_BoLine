@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .jumbotron {
+      padding: 2rem 1rem;
+      margin-bottom: 2rem;
+      margin: 5%;
+    }
+
+    .card {
+      margin-bottom: 2rem;
+    }
+
+    .card-img-top {
+      width: 50%;
+      height: 50%;
+      margin: 0 auto;
+    }
+
+    .card-header {
+      padding: 5%;
+      padding-top: 10%;
+    }
+
+    .card-title {
+      margin: 10%;
+      font-weight: bold;
+      font-size: x-large;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <!-- Name -->
+      <a class="navbar-brand" href="/">BOLine</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <!-- DOC API -->
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Docs API
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="/api/v1/api-docs" role="button" style="display: none;">v1</a></li>
+            </ul>
+          </li>
+        </ul>
+        <!-- Logout -->
+        <a class="btn btn-danger" href="/auth/logout">Logout</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="jumbotron text-center">
+    <div class="container">
+      <h1 class="display-4">Welcome to Ticket Price!</h1>
+      <p class="lead">The best ticket prices in the market.</p>
+    </div>
+  </div>
+
+  <!-- Cards -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card text-center">
+          <div class="card-header">
+            <img src="https://cdn-icons-png.flaticon.com/128/8267/8267471.png" class="card-img-top"
+              alt="Utilizadores Icon">
+            <h5 class="card-title">Utilizadores</h5>
+          </div>
+          <div class="card-body">
+            <div class="container text-center">
+              <div class="row row-cols-2">
+                <a href="/users/create" class="btn btn-outline-primary">Create</a>
+                <a href="/users/show" class="btn btn-outline-primary">Read</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="card text-center">
+          <div class="card-header">
+            <img src="https://cdn-icons-png.flaticon.com/128/749/749218.png" class="card-img-top" alt="Monumentos Icon">
+            <h5 class="card-title">Monumentos</h5>
+          </div>
+          <div class="card-body">
+            <div class="container text-center">
+              <div class="row row-cols-2">
+                <a href="/monument/create" class="btn btn-outline-primary">Create</a>
+                <a href="/monument/list" class="btn btn-outline-primary">Read</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="card text-center">
+          <div class="card-header">
+            <img src="https://cdn-icons-png.flaticon.com/128/839/839888.png" class="card-img-top" alt="Eventos Icon">
+            <h5 class="card-title">Eventos</h5>
+          </div>
+          <div class="card-body">
+            <div class="container text-center">
+              <div class="row row-cols-2">
+                <a href="/event/creates" class="btn btn-outline-primary">Create</a>
+                <a href="/event/show" class="btn btn-outline-primary">Read</a>
+                <a href="/event/edit" class="btn btn-outline-primary">Update</a>
+                <a href="/event/delete" class="btn btn-outline-primary">Delete</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-3">
+        <div class="card text-center">
+          <div class="card-header">
+            <img src="https://cdn-icons-png.flaticon.com/128/866/866143.png" class="card-img-top" alt="Bilhetes Icon">
+            <h5 class="card-title">Bilhetes</h5>
+          </div>
+          <div class="card-body">
+            <div class="container text-center">
+              <div class="row row-cols-2">
+                <a href="/ticket/create" class="btn btn-outline-primary">Create</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,89 @@
+body {
+    background-color: #f7f7f7;
+    font-family: Arial, sans-serif;
+  }
+  
+  .log-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.1);
+  }
+  
+  .t_add {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  
+  .form1 .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form1 label {
+    font-weight: bold;
+  }
+  
+  .form1 input[type="text"],
+  .form1 textarea,
+  .form1 select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    resize: vertical;
+  }
+  
+  .form1 input[type="file"],
+  .form1 input[type="date"],
+  .form1 input[type="number"] {
+    width: 100%;
+  }
+  
+  .button_add {
+    display: inline-block;
+    background-color: #4CAF50;
+    color: #fff;
+    text-align: center;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .button_add:hover {
+    background-color: #45a049;
+  }
+  
+  .a {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+    color: #888;
+  }
+  
+  .btn-back {
+    display: inline-block;
+    margin-top: 20px;
+    color: #888;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 16px;
+  }
+  
+  .btn-back:hover {
+    color: #555;
+  }
+  
+  .glyphicon-arrow-left {
+    margin-right: 5px;
+  }
+  
+  #local {
+    padding: 0%;
+  }
+  

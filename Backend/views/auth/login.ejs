@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="pt">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/stylesheets/auth.css">
+    <script rel="javascripts" src="/javascripts/users.js"></script>
+    <script rel="javascripts" src="/javascripts/auth.js"></script>
+
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h1>Login</h1>
+                        <span class="badge badge-pill badge-secondary" id="span-login">BOLine</span>
+                    </div>
+                    <div class="card-body">
+                        <form action="/auth/login" method="POST" onsubmit="return verifyFormLogin()">
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" class="form-control" id="email" name="email">
+                                <div id='email-message' class="alert alert-danger col-md-12" style="display: none;"></div>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-control" id="password" name="password">
+                            </div>
+
+                            <!-- Display alert message -->
+                            <% if (message) { %>
+                                <div class="alert alert-danger">
+                                    <%= message %>
+                                </div>
+                            <% } %>
+                            
+                            <button type="submit" class="btn btn-primary">Login</button>
+                        </form>
+                        <p>Não tem conta? <a href="/auth/register">Registe-se</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

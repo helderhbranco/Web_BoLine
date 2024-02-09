@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Events</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+  <style>
+    body {
+      background-color: #f1f1f1;
+    }
+
+    .container {
+      margin-top: 50px;
+    }
+
+    .event-row {
+      background-color: #fff;
+      border-radius: 5px;
+      margin-bottom: 20px;
+      padding: 20px;
+    }
+
+    .event-title {
+      color: #3f3f3f;
+      font-size: 24px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .event-info {
+      color: #7f7f7f;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    .event-btn {
+      background-color: #007bff;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 16px;
+      padding: 10px 20px;
+      transition: all 0.3s ease;
+    }
+
+    .event-btn:hover {
+      background-color: #0056b3;
+      cursor: pointer;
+    }
+
+    .event-row .row .col-md-6:last-child {
+      text-align: right;
+    }
+
+    .event-row img {
+      max-width: 100%;
+      max-height: 200px;
+      object-fit: cover;
+      margin-bottom: 10px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="icon" href="/images/imagem.ico">
+  <title>Events</title>
+  <style>
+    body {
+      background-color: #f7f7f7;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 30px;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .mb-5 {
+      margin-bottom: 5px;
+    }
+
+    .event-row {
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+
+    .event-title {
+      margin-top: 0;
+    }
+
+    .event-info {
+      margin-bottom: 5px;
+    }
+
+    .a {
+      display: block;
+      text-align: center;
+      margin-top: 20px;
+      color: #fff;
+      background-color: #337ab7;
+      border-color: #2e6da4;
+      padding: 6px 12px;
+      text-decoration: none;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1 class="text-center mb-12">Events</h1>
+    <div class="row">
+      <% events.forEach(function(event) { %>
+        <!--<div class="col-md-6">-->
+        <div class="event-row">
+          <h2 class="event-title">
+            <%= event.name %>
+          </h2>
+          <div class="row">
+            <div class="col-md-4">
+              <img src="../images/<%= event.photo %>" alt="Event Image" class="img-responsive">
+            </div>
+            <div class="col-md-8">
+              <p class="event-info"><strong>Date:</strong>
+                <%= event.date ? event.date.toDateString() : '' %>
+              </p>
+              <p class="event-info"><strong>Description:</strong>
+                <%= event.description %>
+              </p>
+              <p class="event-info"><strong>Price:</strong>
+                <%= event.price %>
+              </p>
+              <p class="event-info"><strong>Capacity:</strong>
+                <%= event.capacity %>
+              </p>
+              <p class="event-info"><strong>Status:</strong>
+                <%= event.status ? 'Active' : 'Inactive' %>
+              </p>
+              <p class="event-info"><strong>Local:</strong>
+                <%= event.event_place_name %>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!--</div>-->
+        <% }); %>
+    </div>
+    <a href="/pagina_inicial" class="btn btn-back">
+      <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+    </a>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+    integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+    integrity="sha384-WYXm34m1+bIQr60e63E1wvV8W+tKz/2I7xU6a3v9Pq3"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</body>
+
+</html>

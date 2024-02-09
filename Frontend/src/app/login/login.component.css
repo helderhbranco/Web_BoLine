@@ -1,0 +1,49 @@
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+#title {
+  font-size: 48px;
+  font-weight: bold;
+}
+
+.background-image {
+  background-image: url('src/assets/back.jpeg');
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.card-container {
+  width: 60%;
+}
+
+.full-width-form {
+  width: 100%;
+}
+
+.full-width-input {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+a {
+  text-decoration: none;
+  margin-right: 10px;
+}

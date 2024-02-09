@@ -1,0 +1,37 @@
+<div>
+  <app-navbar></app-navbar>
+</div>
+<div class="background-image">
+  <div class="container">
+    <div class="card-container">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-subtitle>BOLine</mat-card-subtitle>
+          <mat-card-title id="title">LOGIN</mat-card-title>
+        </mat-card-header>
+        <hr>
+        <mat-card-content class="text-center">
+          <form class="example-form" [formGroup]="loginForm" (ngSubmit)="login()">
+            <mat-form-field class="full-width-form">
+              <mat-label>Email</mat-label>
+              <input type="email" matInput formControlName="email">
+            </mat-form-field>
+            <br>
+            <mat-form-field class="full-width-form">
+              <mat-label>Password</mat-label>
+              <input type="password" matInput formControlName="password">
+            </mat-form-field>
+            <div class="button-container">
+              <button mat-raised-button color="primary">Login</button>
+            </div>
+          </form>
+          <br>
+          <a mat-button color="warn" routerLink="/home">Voltar</a>
+          <div>
+            <p>Ainda não tem conta? <a mat-button routerLink="/register">Registe-se</a></p>
+          </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>
+</div>

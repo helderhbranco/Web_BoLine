@@ -1,0 +1,23 @@
+<div>
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="navbar-nav">
+      <a
+        class="nav-item nav-link"
+        routerLink="/home"
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Home</a
+      >
+      <a
+        class="nav-item nav-link"
+        routerLink="/monuments"
+        routerLinkActive="active"
+        >Monumentos</a
+      >
+      <a class="nav-item nav-link" style="color: red" *ngIf="islogged" routerLink="/profile">{{ user }}</a>
+      <a class="nav-item nav-link" routerLink="/login" *ngIf="islogged">Logout</a>
+      <a class="nav-item nav-link" routerLink="/login" *ngIf="!islogged">Login</a>
+      <a class="nav-item nav-link" routerLink="/register" *ngIf="!islogged">Register</a>
+    </div>
+  </nav>
+</div>

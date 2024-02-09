@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/stylesheets/event.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="icon" href="/images/imagem.ico">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <title>Criar Evento</title>
+</head>
+
+<body>
+  <div class="log-form">
+    <h2 class="t_add">CRIAR EVENTO</h2>
+    <form class="form1" action="/event/create" enctype="multipart/form-data" method="post">
+      <div class="form-group">
+        <label>Nome</label>
+        <input type="text" class="form-control" id="name" name="nome" placeholder="Nome">
+      </div>
+
+      <div class="form-group">
+        <label>Imagem</label>
+        <input type="file" class="form-control" id="image" name="image" placeholder="Imagem">
+      </div>
+
+      <div class="form-group">
+        <label>Descrição</label>
+        <textarea class="form-control" id="description" name="description" placeholder="Algo sobre o seu evento" rows="3"></textarea>
+      </div>
+
+      <div class="form-group">
+        <label>Data</label>
+        <input type="date" class="form-control" id="date" name="date" placeholder="Data de realização">
+      </div>
+
+      <div class="form-group">
+        <label>Data Final</label>
+        <input type="date" class="form-control" id="date_final" name="date_final" placeholder="Data de realização">
+      </div>
+
+      <div class="form-group">
+        <label>Lotação</label>
+        <input type="number" class="form-control" id="capacity" name="capacity" placeholder="Lotação" min="1">
+      </div>
+
+      <div class="form-group">
+        <label>Preço</label>
+        <input type="number" class="form-control" id="price" name="price" placeholder="Preço" min="0">
+      </div>
+
+      <div class="form-group">
+        <label>Local</label>
+        <select id="local" name="local" class="form-control">
+          <% for(var i=0; i < monument.length; i++) { %>
+          <option value="<%- monument[i].place_id %>"> <%- monument[i].name %></option>
+          <% } %>
+        </select>
+      </div>
+
+      <button id="submit" type="submit" class="button_add">Criar</button>
+    </form>
+    <a href="/pagina_inicial" class="btn btn-back">
+      <span class="glyphicon glyphicon-arrow-left"></span> Voltar
+    </a>
+  </div>
+</body>
+
+</html>
